@@ -18,7 +18,7 @@ function AudioScreen(){
   const [isPlay, setIsPlay] = useState(false);
   const [isDownloading, setIsDownlading] = useState(false);
   const { position, duration } = useProgress(0, 0);
-  var track = {
+  let track = {
     url: deshana.mediaUrl,
     title: deshana.title,
     artist: deshana.sermoniser,
@@ -121,7 +121,7 @@ function AudioScreen(){
 
   const startDownload = (url: string) => {
     setIsDownlading(true)
-    var filename = url.replace(/^.*[\\\/]/, '');
+    let filename = url.replace(/^.*[\\\/]/, '');
     RNFetchBlob.config({
       fileCache: true,
       appendExt: 'mp3',
@@ -165,9 +165,9 @@ function AudioScreen(){
 
   const timeConvert = (d: number) => {
     d = Number(d);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor(d % 3600 / 60);
-    var s = Math.floor(d % 3600 % 60);
+    let h = Math.floor(d / 3600);
+    let m = Math.floor(d % 3600 / 60);
+    let s = Math.floor(d % 3600 % 60);
 
     if (h > 0) {
       return h + ":" + m + ":" + s;

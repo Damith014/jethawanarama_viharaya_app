@@ -41,7 +41,7 @@ function SermonsListScreen() {
           setActive(true);
         }
         setIsLoading(true);
-        var response = await Client.deshana(
+        let response = await Client.deshana(
           medium ?? "audio",
           route.params.program_id
         );

@@ -76,7 +76,7 @@ function HomeScreen() {
     getDashboardData();
     async function getDashboardData() {
       setIsLoading(true);
-      var response = await Client.dashboard();
+      let response = await Client.dashboard();
       if (response.status == 200) {
         setNoData(false);
         setAudio(response.dashboard?.deshana as []);
@@ -115,7 +115,7 @@ function HomeScreen() {
     setActive(language);
 
     setIsLoading(true);
-    var response = await Client.dashboard();
+    let response = await Client.dashboard();
     if (response.status == 200) {
       setNoData(false);
       setAudio(response.dashboard?.deshana as []);

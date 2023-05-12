@@ -18,7 +18,7 @@ function LanguageScreen() {
   const { i18n } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
 
-  var language_props = [
+  let language_props = [
     { label: "සිංහල", value: "lk" },
     { label: "English", value: "en" },
   ];

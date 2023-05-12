@@ -119,7 +119,7 @@ const Client = {
   },
   // Get access token
   accessToken: async () => {
-    var token = "";
+    let token = "";
     try {
       token = (await AsyncStorage.getItem("refreshToken")) as string;
     } catch (error) {}
@@ -131,8 +131,8 @@ const Client = {
   },
   // Get Menu
   menu: async () => {
-    var token = "";
-    var language = "";
+    let token = "";
+    let language = "";
     try {
       token = (await AsyncStorage.getItem("accessToken")) as string;
       language = (await AsyncStorage.getItem("language")) as string;
@@ -147,8 +147,8 @@ const Client = {
   },
   //Get Programs
   program:async () => {
-    var token = "";
-    var language = "";
+    let token = "";
+    let language = "";
     try {
       token = (await AsyncStorage.getItem("accessToken")) as string;
       language = (await AsyncStorage.getItem("language")) as string;
@@ -165,8 +165,8 @@ const Client = {
   },
   //Get About
   about:async () => {
-    var token = "";
-    var language = "";
+    let token = "";
+    let language = "";
     try {
       token = (await AsyncStorage.getItem("accessToken")) as string;
       language = (await AsyncStorage.getItem("language")) as string;
@@ -181,8 +181,8 @@ const Client = {
   },
   //Post contact
   contact:async (data: any) => {
-    var token = "";
-    var language = "";
+    let token = "";
+    let language = "";
     try {
       token = (await AsyncStorage.getItem("accessToken")) as string;
       language = (await AsyncStorage.getItem("language")) as string;
@@ -197,8 +197,8 @@ const Client = {
   },
   //Get dashboard
   dashboard:async () => {
-    var token = "";
-    var language = "";
+    let token = "";
+    let language = "";
     try {
       token = (await AsyncStorage.getItem("accessToken")) as string;
       language = (await AsyncStorage.getItem("semo_language")) as string;
@@ -213,8 +213,8 @@ const Client = {
   },
   //Get dashboard
   information:async (program_id: string) => {
-    var token = "";
-    var language = "";
+    let token = "";
+    let language = "";
     try {
       token = (await AsyncStorage.getItem("accessToken")) as string;
       language = (await AsyncStorage.getItem("language")) as string;
@@ -229,8 +229,8 @@ const Client = {
   },
   //Get search
   search:async (key: string) => {
-    var token = "";
-    var language = "";
+    let token = "";
+    let language = "";
     try {
       token = (await AsyncStorage.getItem("accessToken")) as string;
       language = (await AsyncStorage.getItem("language")) as string;
@@ -245,8 +245,8 @@ const Client = {
   },
   //Get Deshana
   deshana:async(type: string, id: string)=>{
-      var token = '';
-      var language = '';
+      let token = '';
+      let language = '';
       try{
           token = (await AsyncStorage.getItem('accessToken')) as string;
           language = (await AsyncStorage.getItem('semo_language')) as string;

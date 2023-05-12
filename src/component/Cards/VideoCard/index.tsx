@@ -19,13 +19,13 @@ export default function VideoCard({
 }: Props) {
   
   function convert_time(duration: string): string {
-    var matches = duration.match(/[0-9]+[HMS]/g);
-    var hours = 0,
+    let matches = duration.match(/[0-9]+[HMS]/g);
+    let hours = 0,
       minutes = 0,
       seconds = 0;
     matches?.forEach(function (part) {
-      var unit = part.charAt(part.length - 1);
-      var amount = parseInt(part.slice(0, -1));
+      let unit = part.charAt(part.length - 1);
+      let amount = parseInt(part.slice(0, -1));
 
       switch (unit) {
         case "H":

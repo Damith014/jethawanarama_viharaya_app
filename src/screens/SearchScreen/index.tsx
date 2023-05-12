@@ -32,7 +32,7 @@ function SearchScreen() {
   const changeValue = async (text: string) => {
     setText(text);
     setIsLoading(false);
-    var response = await Client.search(text);
+    let response = await Client.search(text);
     if (response.search?.success) {
       setSearch(response.search.result as []);
     }

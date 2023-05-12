@@ -51,7 +51,7 @@ export default function DownloadCard({
   }, []);
 
   const favoriteClicked = async () => {
-    var deleted = false;
+    let deleted = false;
     try {
       let json = await AsyncStorage.getItem("favorite");
       let favorites = JSON.parse(json ?? "");
@@ -60,7 +60,7 @@ export default function DownloadCard({
         await AsyncStorage.setItem("favorite", JSON.stringify([result.id]));
       } else {
         favorites.forEach((element: any) => {
-          var index = favorites.indexOf(result.id);
+          let index = favorites.indexOf(result.id);
           if (index > -1) {
             favorites.splice(index, 1);
             setFavorite(false);
@@ -106,7 +106,7 @@ export default function DownloadCard({
   };
   const startDownload = (url: string) => {
     setIsDownlading(true);
-    var filename = url.replace(/^.*[\\\/]/, "");
+    let filename = url.replace(/^.*[\\\/]/, "");
     RNFetchBlob.config({
       fileCache: true,
       appendExt: "mp3",
