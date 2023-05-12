@@ -1,7 +1,6 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { About, Dashboard, Information, Menu, Programs, Response, Search, Sermon } from "./Interface";
-
 const baseURL = () => {
   const apiUrl = "https://www.jethavanaramaviharaya.org/";
   return apiUrl;
@@ -20,13 +19,12 @@ const setInstance = async (token: string) => {
     console.log(error);
   }
 };
-
 const handleTokenResponse = (response: any) => {
   if (response && response.status === 200) {
     if (response.data.refreshToken != null) {
-      setRefreshToken(response.data.refreshToken);
+      setRefreshToken(response.data.refreshToken).catch(error => {});
     } else if (response.data.accessToken != null) {
-      setInstance(response.data.accessToken);
+      setInstance(response.data.accessToken).catch(error => {});
     }
   }
   return {
@@ -36,7 +34,6 @@ const handleTokenResponse = (response: any) => {
     error: response && response.data ? response.data.error : "",
   };
 };
-
 const handleMenuResponse = (response: any) => {
   return {
     menu: response.data as Menu,
@@ -44,7 +41,6 @@ const handleMenuResponse = (response: any) => {
     error: response && response.data ? response.data.error : "",
   };
 };
-
 const handleProgramsResponse = (response: any) => {
   return {
     programs: response.data as Programs,
@@ -52,7 +48,6 @@ const handleProgramsResponse = (response: any) => {
     error: response && response.data ? response.data.error : "",
   };
 };
-
 const handleAboutResponse = (response: any) => {
   return {
     about: response.data as About,
@@ -60,7 +55,6 @@ const handleAboutResponse = (response: any) => {
     error: response && response.data ? response.data.error : "",
   };
 };
-
 const handleContactResponse = (response: any) => {
   return {
     response: response.data as Response,
@@ -68,7 +62,6 @@ const handleContactResponse = (response: any) => {
     error: response && response.data ? response.data.error : "",
   };
 };
-
 const handleDashboardresponse = (response: any) => {
   return {
     dashboard: response.data as Dashboard,
@@ -76,7 +69,6 @@ const handleDashboardresponse = (response: any) => {
     error: response && response.data ? response.data.error : "",
   };
 };
-
 const handleInformationresponse = (response: any) => {
   return {
     information: response.data as Information,
@@ -84,7 +76,6 @@ const handleInformationresponse = (response: any) => {
     error: response && response.data ? response.data.error : "",
   };
 };
-
 const handleSearchresponse = (response: any) => {
   return {
     search: response.data as Search,
@@ -92,7 +83,6 @@ const handleSearchresponse = (response: any) => {
     error: response && response.data ? response.data.error : "",
   };
 };
-
 const handleDeshanresponse = (response: any) => {
   return {
     sermon: response.data as Sermon,
@@ -100,8 +90,6 @@ const handleDeshanresponse = (response: any) => {
     error: response && response.data ? response.data.error : "",
   };
 };
-
-
 const handleError = (errorObject: any) => {
   return {
     menu: null,
@@ -116,7 +104,6 @@ const handleError = (errorObject: any) => {
     message: errorObject.response.data.message,
   };
 };
-
 const Client = {
   // Get refresh token
   refreshToken: () => {
@@ -130,7 +117,6 @@ const Client = {
       .then(handleTokenResponse)
       .catch(handleError);
   },
-
   // Get access token
   accessToken: async () => {
     var token = "";
@@ -143,7 +129,6 @@ const Client = {
       .then(handleTokenResponse)
       .catch(handleError);
   },
-  
   // Get Menu
   menu: async () => {
     var token = "";
@@ -160,7 +145,6 @@ const Client = {
       .then(handleMenuResponse)
       .catch(handleError);
   },
-
   //Get Programs
   program:async () => {
     var token = "";
@@ -179,7 +163,6 @@ const Client = {
       .then(handleProgramsResponse)
       .catch(handleError);
   },
-
   //Get About
   about:async () => {
     var token = "";
@@ -196,7 +179,6 @@ const Client = {
       .then(handleAboutResponse)
       .catch(handleError);
   },
-
   //Post contact
   contact:async (data: any) => {
     var token = "";
@@ -213,7 +195,6 @@ const Client = {
       .then(handleContactResponse)
       .catch(handleError);
   },
-
   //Get dashboard
   dashboard:async () => {
     var token = "";
@@ -230,7 +211,6 @@ const Client = {
       .then(handleDashboardresponse)
       .catch(handleError);
   },
-
   //Get dashboard
   information:async (program_id: string) => {
     var token = "";
@@ -247,7 +227,6 @@ const Client = {
       .then(handleInformationresponse)
       .catch(handleError);
   },
-
   //Get search
   search:async (key: string) => {
     var token = "";
@@ -264,7 +243,6 @@ const Client = {
       .then(handleSearchresponse)
       .catch(handleError);
   },
-
   //Get Deshana
   deshana:async(type: string, id: string)=>{
       var token = '';
@@ -280,5 +258,4 @@ const Client = {
         .catch(handleError);
   },
 };
-
 export default Client;
