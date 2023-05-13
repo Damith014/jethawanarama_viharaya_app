@@ -5,7 +5,6 @@ import {
   StatusBar,
   View,
   ImageBackground,
-  Dimensions,
   FlatList,
 } from "react-native";
 import EmptyCard from "../../../component/Cards/EmptyCard";
@@ -15,9 +14,9 @@ import Client from "../../../client/Client";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import { Deshana } from "../../../client/Interface";
 import DownloadCard from "../../../component/Cards/DownloadCard";
+import { styles } from "./styles";
 const header = require("../../../assest/images/header_two.png");
 const body = require("../../../assest/images/body_three.png");
-const windowWidth = Dimensions.get("window").width;
 type tabScreenRouteProp = RouteProp<BottomTabNavigation, "Image">;
 type sermonsScreenRouteProp = RouteProp<BottomTabNavigation, "Sermons">;
 function SermonsScreen() {
@@ -57,7 +56,7 @@ function SermonsScreen() {
     return <EmptyCard title={t("sorry")} body={t("message")} />;
   };
   return (
-    <View style={{ flex: 10, backgroundColor: "#ffff" }}>
+    <View style={styles.container}>
       <Spinner
         visible={isLoading}
         textContent={"Loading..."}
@@ -74,17 +73,7 @@ function SermonsScreen() {
       </View>
       <View style={{ flex: 2 }}>
         <View
-          style={{
-            flex: 1,
-            marginHorizontal: 16,
-            top: -62,
-            paddingTop: 15,
-            width: windowWidth - 32,
-            borderRadius: 6,
-            position: "absolute",
-            backgroundColor: "#ffffff",
-            height: "110%",
-          }}
+          style={styles.view}
         >
           <FlatList
             style={{ marginBottom: 50 }}
