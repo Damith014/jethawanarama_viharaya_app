@@ -1,0 +1,6 @@
+{
+  "css.lint.duplicateProperties": "warning",
+  "less.lint.duplicateProperties": "warning",
+  "scss.lint.duplicateProperties": "warning",
+  "explorer.incrementalNaming": "smart"
+}

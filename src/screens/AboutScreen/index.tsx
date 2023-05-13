@@ -305,7 +305,7 @@ function AboutScreen() {
             }}
           >
             <TextInput
-              placeholder={t("your_name")}
+              placeholder={t("your_name") ?? ""}
               placeholderTextColor="#8E8E93"
               style={{
                 width: "98%",
@@ -335,7 +335,7 @@ function AboutScreen() {
             }}
           >
             <TextInput
-              placeholder={t("your_contact_number")}
+              placeholder={t("your_contact_number") ?? ""}
               placeholderTextColor="#8E8E93"
               keyboardType="numeric"
               style={{
@@ -366,7 +366,7 @@ function AboutScreen() {
             }}
           >
             <TextInput
-              placeholder={t("your_email")}
+              placeholder={t("your_email") ?? ""}
               placeholderTextColor="#8E8E93"
               keyboardType="email-address"
               style={{
@@ -397,7 +397,7 @@ function AboutScreen() {
             }}
           >
             <TextInput
-              placeholder={t("your_message")}
+              placeholder={t("your_message") ?? ""}
               placeholderTextColor="#8E8E93"
               style={{
                 width: "98%",

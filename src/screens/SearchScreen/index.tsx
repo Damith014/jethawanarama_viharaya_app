@@ -77,7 +77,7 @@ function SearchScreen() {
               style={{ marginLeft: 6, marginTop: 13 }}
             />
             <TextInput
-              placeholder={t("topic")}
+              placeholder={t("topic") ?? ""}
               placeholderTextColor="#8E8E93"
               style={styles.serchInPutTxt}
               clearButtonMode={"while-editing"}
