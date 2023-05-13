@@ -2,7 +2,6 @@ import React from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer, RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { StackNavigationProp, createStackNavigator } from '@react-navigation/stack';
-
 import SplashScreen from './src/screens/SplashScreen';
 import { RootNavigation } from './src/navigations/RootNavigation';
 import DrawerNavigation from './src/navigations/DrawerNavigation';
@@ -17,7 +16,6 @@ import { t } from "i18next";
 import VideoScreen from './src/screens/Player/VideoScreen';
 import AudioScreen from './src/screens/Player/AudioScreen';
 import { Deshana } from './src/client/Interface';
-
 const Stack = createStackNavigator<RootNavigation>();
 type sermonsScreenRouteProp = RouteProp<RootNavigation,"SermonsList">;
 type videoScreenRouteProp = RouteProp<RootNavigation,"Video">;
@@ -55,7 +53,6 @@ function SearchScreenStack() {
     </Stack.Navigator>
   );
 }
-
 function AudioScreenStack() {
   const route = useRoute<audioScreenRouteProp>();
   const deshana = route.params.deshana as Deshana;
@@ -75,19 +72,15 @@ function AudioScreenStack() {
           headerTintColor: '#6F6F6F',
           title: `${t('listen')}`,
           headerRight: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Search")} style={{ marginRight: 15 }}>
-              <Ionicons name="ios-search" size={20} color='rgba(60, 60, 67, 0.6)' />
-            </TouchableOpacity>
+            SearchIcon(navigation)
           ),}}
       />
     </Stack.Navigator>
   );
 }
-
 function VideoScreenStack() {
   const route = useRoute<videoScreenRouteProp>();
   const video_id = route.params.video_id as string;
-  
   return (
     <Stack.Navigator
       initialRouteName="Video"
@@ -106,7 +99,6 @@ function VideoScreenStack() {
     </Stack.Navigator>
   )
 }
-
 function SermonsListScreenStack() {
   const route = useRoute<sermonsScreenRouteProp>();
   const program_id = route.params.program_id as string;
@@ -127,14 +119,17 @@ function SermonsListScreenStack() {
           title: `${t('sermons')}`,
           headerBackTitleVisible: false,
           headerRight: () => (
-            <TouchableOpacity onPress={() => navigation.navigate("Search")} style={{ marginRight: 15 }}>
-              <Ionicons name="ios-search" size={20} color='rgba(60, 60, 67, 0.6)' />
-            </TouchableOpacity>
+            SearchIcon(navigation)
           ),
         }}
       />
     </Stack.Navigator>
   )
+}
+function SearchIcon(navigation: any) {
+  return <TouchableOpacity onPress={() => navigation.navigate("Search")} style={{ marginRight: 15 }}>
+    <Ionicons name="ios-search" size={20} color='rgba(60, 60, 67, 0.6)' />
+    </TouchableOpacity>
 }
 function App(){
   return (

@@ -3,7 +3,7 @@ import {
   StackNavigationProp,
   createStackNavigator,
 } from "@react-navigation/stack";
-import { TouchableOpacity, Image, Text } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Icon from "react-native-vector-icons/Entypo";
 import Ionicons from "react-native-vector-icons/Ionicons";
