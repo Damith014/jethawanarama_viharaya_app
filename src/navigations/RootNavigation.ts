@@ -1,5 +1,4 @@
 import { Deshana } from "../client/Interface";
-
 export type RootNavigation = {
     Splash: undefined;
     Auth: undefined;

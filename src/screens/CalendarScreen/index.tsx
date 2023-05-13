@@ -1,7 +1,6 @@
 import React from "react";
 import { View, SafeAreaView } from "react-native";
 import { WebView } from "react-native-webview";
-
 function CalendarScreen() {
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>

@@ -10,7 +10,6 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import { RouteProp, useRoute } from '@react-navigation/native';
 import { Deshana } from '../../../client/Interface';
 import { RootNavigation } from '../../../navigations/RootNavigation';
-
 type audioScreenRouteProp = RouteProp<RootNavigation,"Audio">;
 function AudioScreen(){
   const route = useRoute<audioScreenRouteProp>();
@@ -28,11 +27,9 @@ function AudioScreen(){
     mediaLowUrl: deshana.mediaLowUrl,
     mediaLowSize: deshana.mediaLowSize,
   };
-
   useEffect(() => {
     setup();
   }, []);
-
   const setup = async () => {
     await TrackPlayer.setupPlayer({});
     if (Platform.OS == "android") {
@@ -64,7 +61,6 @@ function AudioScreen(){
     }
     await TrackPlayer.reset();
   }
-
   const play = async (status: boolean) => {
     await TrackPlayer.add([track]);
     const state = await TrackPlayer.getState();
@@ -118,7 +114,6 @@ function AudioScreen(){
       console.log(err);
     }
   };
-
   const startDownload = (url: string) => {
     setIsDownlading(true)
     let filename = url.replace(/^.*[\\\/]/, '');
@@ -162,7 +157,6 @@ function AudioScreen(){
   const mbRound = (value: string) => {
     return ( Number(value) / (1024 * 1024)).toFixed(1);
   }
-
   const timeConvert = (d: number) => {
     d = Number(d);
     let h = Math.floor(d / 3600);
@@ -174,8 +168,6 @@ function AudioScreen(){
     } else {
       return m + ":" + s;
     }
-
-
   }
   return (
     <View style={styles.container}>

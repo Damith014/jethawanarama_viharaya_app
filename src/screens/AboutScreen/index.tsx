@@ -32,7 +32,7 @@ function AboutScreen() {
     message: "",
   });
   useEffect(() => {
-    getAbout();
+    getAbout().catch(error=>{});
     async function getAbout() {
       setIsLoading(true);
       let response = await Client.about();
@@ -77,7 +77,6 @@ function AboutScreen() {
       ]);
     }
   };
-
   const openLink = (type: string) => {
     let url: string = "";
     if (type == "podcast") {
@@ -101,7 +100,6 @@ function AboutScreen() {
     }
     Linking.openURL(url).catch((err) => console.error("Error", err));
   };
-
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF" }}>
       <ScrollView style={{ padding: 15, backgroundColor: "#FFFFFF", flex: 1 }}>
@@ -155,7 +153,6 @@ function AboutScreen() {
               </TouchableOpacity>
             </View>
           </View>
-
           <View style={{ marginTop: 25 }}>
             <Text style={{ color: "#000000", fontWeight: "700", fontSize: 14 }}>
               {t("email")}
@@ -173,7 +170,6 @@ function AboutScreen() {
               </Text>
             </TouchableOpacity>
           </View>
-
           <View style={{ flexDirection: "row" }}>
             <View style={{ flex: 1, marginTop: 25 }}>
               <Text
@@ -246,7 +242,6 @@ function AboutScreen() {
               </TouchableOpacity>
             </View>
           </View>
-
           <View style={{ marginTop: 25 }}>
             <Text style={{ color: "#000000", fontWeight: "700", fontSize: 14 }}>
               {t("social_media")}
@@ -290,7 +285,6 @@ function AboutScreen() {
               </TouchableOpacity>
             </View>
           </View>
-
           <Text
             style={{
               color: "#6F6F6F",

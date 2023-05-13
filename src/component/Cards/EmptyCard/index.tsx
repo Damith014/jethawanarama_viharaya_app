@@ -2,12 +2,10 @@ import React from "react";
 import { View, Text, Image } from "react-native";
 import { styles } from "./styles";
 const error_message = require("../../../assest/images/image_error.png");
-
 type Props = {
   title: string;
   body: string;
 }; 
-
 export default function EmptyCard({ title, body }: Props) {
   return (
     <View style={styles.content_main}>

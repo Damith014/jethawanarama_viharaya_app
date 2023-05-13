@@ -26,7 +26,7 @@ function SermonsListScreen() {
   const [videos, setVideo] = useState<any>([]);
   const [titile, setTitle] = useState("");
   useEffect(() => {
-    getLanguage();
+    getLanguage().catch(error =>{});
     async function getLanguage() {
       try {
         let medium = await AsyncStorage.getItem("medium");

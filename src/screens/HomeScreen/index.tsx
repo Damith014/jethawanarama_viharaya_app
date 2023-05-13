@@ -20,7 +20,6 @@ import { Deshanas, Videos } from "../../client/Interface";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootNavigation } from "../../navigations/RootNavigation";
 import { useNavigation } from "@react-navigation/native";
-
 const bgImage = require("../../assest/images/no_data.png");
 type homeScreenProp = StackNavigationProp<RootNavigation, "Home">;
 function HomeScreen() {
@@ -28,16 +27,14 @@ function HomeScreen() {
   const [active, setActive] = useState(false);
   const [active1, setActive1] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [audios, setAudio] = useState([]);
-  const [videos, setVideo] = useState([]);
+  const [audios, setAudio] = useState<any>([]);
+  const [videos, setVideo] = useState<any>([]);
   const [noData, setNoData] = useState(false);
   const { t } = useTranslation();
-
   let transformX = useRef(new Animated.Value(0)).current;
   let transformX1 = useRef(new Animated.Value(0)).current;
-
   useEffect(() => {
-    getLanguage();
+    getLanguage().catch(error=>{});
     async function getLanguage() {
       let language = await AsyncStorage.getItem("semo_language");
       if (language == "lk") {
@@ -72,7 +69,6 @@ function HomeScreen() {
         useNativeDriver: true,
       }).start();
     }
-
     getDashboardData();
     async function getDashboardData() {
       setIsLoading(true);
@@ -89,7 +85,6 @@ function HomeScreen() {
       setIsLoading(false);
     }
   }, [active, active1]);
-
   const rotationX = transformX.interpolate({
     inputRange: [0, 1],
     outputRange: [2, 58],
@@ -98,7 +93,6 @@ function HomeScreen() {
     inputRange: [0, 1],
     outputRange: [2, 58],
   });
-
   const changedLanguage = async (language: boolean) => {
     setAudio([]);
     setVideo([]);
@@ -111,9 +105,7 @@ function HomeScreen() {
     } catch (error) {
       console.log(error);
     }
-
     setActive(language);
-
     setIsLoading(true);
     let response = await Client.dashboard();
     if (response.status == 200) {
@@ -127,7 +119,6 @@ function HomeScreen() {
     }
     setIsLoading(false);
   };
-
   const changedMedium = async (medium: boolean) => {
     try {
       if (medium) {
@@ -158,7 +149,6 @@ function HomeScreen() {
       navigation={navigation}
     />
   );
-
   const EmptyListMessage = ({}) => {
     return (
       <View>
@@ -166,7 +156,6 @@ function HomeScreen() {
       </View>
     );
   };
-
   return (
     <SafeAreaView style={styles.content}>
       <View style={styles.content_sub}>
@@ -327,5 +316,4 @@ function HomeScreen() {
     </SafeAreaView>
   );
 }
-
 export default HomeScreen;

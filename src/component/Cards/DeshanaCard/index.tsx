@@ -3,7 +3,6 @@ import { View, Text, TouchableOpacity, ImageBackground } from "react-native";
 import { styles } from "./styles";
 import { Deshana } from "../../../client/Interface";
 const bgImage = require("../../../assest/images/bg.png");
-
 type Props = {
   deshana: Deshana;
   onPress: any;

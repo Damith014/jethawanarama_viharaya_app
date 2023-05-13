@@ -89,7 +89,7 @@ function InformationScreen() {
           >
             {information?.description ?? ""}
           </Text>
-          {/* <WebView
+          <WebView
             style={{
               textAlign: "justify",
               fontSize: 14,
@@ -99,7 +99,7 @@ function InformationScreen() {
             }}
             originWhitelist={["*"]}
             source={{ html: information?.contents ?? "<div></div>" }}
-          /> */}
+          />
         </View>
       </View>
     </ScrollView>

@@ -43,7 +43,6 @@ const handleMenuResponse = (response: any) => {
 };
 const handleProgramsResponse = (response: any) => {
   console.log(response);
-  
   return {
     programs: response.data as Programs,
     status: response && response.status ? response.status : 500,
@@ -51,7 +50,6 @@ const handleProgramsResponse = (response: any) => {
   };
 };
 const handleAboutResponse = (response: any) => {
-  
   return {
     about: response.data as About,
     status: response && response.status ? response.status : 500,

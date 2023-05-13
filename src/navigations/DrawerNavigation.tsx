@@ -10,10 +10,8 @@ import AboutScreen from "../screens/AboutScreen";
 import ProgramScreen from "../screens/ProgramScreen";
 import { t } from "i18next";
 import Ionicons from "react-native-vector-icons/Ionicons";
-
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator<RootNavigation>();
-
 function MainScreenStack() {
   return (
     <Stack.Navigator 
@@ -29,7 +27,6 @@ function MainScreenStack() {
     </Stack.Navigator>
   );
 }
-
 function HomeScreenStack() {
   return (
     <Stack.Navigator initialRouteName="Home"
@@ -44,7 +41,6 @@ function HomeScreenStack() {
     </Stack.Navigator>
   );
 }
-
 function ProgramScreenStack() {
   return (
     <Stack.Navigator
@@ -81,8 +77,6 @@ function AboutScreenStack() {
     </Stack.Navigator>
   );
 }
-
-
 function DrawerNavigation() {
   return(
     <Drawer.Navigator
@@ -108,5 +102,4 @@ function DrawerNavigation() {
     </Drawer.Navigator>
   );
 }
-
 export default DrawerNavigation;

@@ -11,35 +11,30 @@ import Client from "../../client/Client";
 import { RootNavigation } from "../../navigations/RootNavigation";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
-
 type languageScreenProp = StackNavigationProp<RootNavigation, "Auth">;
 function LanguageScreen() {
   const navigation = useNavigation<languageScreenProp>();
   const { i18n } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
-
   let language_props = [
     { label: "සිංහල", value: "lk" },
     { label: "English", value: "en" },
   ];
-
   useEffect(() => {
-    // setting()
-    // async function setting() {
-    //   await selectLanguage("lk");
-        // const backHandler = BackHandler.addEventListener(
-        //   "hardwareBackPress",
-        //   backAction
-        // );
-        // return () => backHandler.remove();
-    // }
+    setting().catch(error=>{})
+    async function setting() {
+      await selectLanguage("lk");
+        const backHandler = BackHandler.addEventListener(
+          "hardwareBackPress",
+          backAction
+        );
+        return () => backHandler.remove();
+    }
   }, []);
-
   const backAction = () => {
     BackHandler.exitApp();
     return true;
   };
-
   const goHome = async () => {
     setIsLoading(true);
     await Client.refreshToken();
@@ -68,7 +63,6 @@ function LanguageScreen() {
       console.log(error);
     }
   };
-
   return (
     <View style={styles.container}>
       <Spinner
@@ -89,7 +83,6 @@ function LanguageScreen() {
       <View style={styles.textContainer}>
         <Text>ඔබේ භාෂාව තෝරන්න</Text>
         <Text>Select your Language</Text>
-
         <View style={styles.radioContainer}>
           <RadioForm
             radio_props={language_props}

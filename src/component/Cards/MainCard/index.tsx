@@ -6,7 +6,6 @@ import DeshanaCard from "../DeshanaCard";
 import VideoCard from "../VideoCard";
 import "../../../assest/i18n/i18n";
 import { Deshana, Deshanas, Video, Videos } from "../../../client/Interface";
-
 type Props = {
   deshana?: Deshanas;
   video?: Videos;
@@ -15,7 +14,6 @@ type Props = {
   isVideo: boolean;
   navigation: any;
 };
-
 export default function MainCard({
   deshana,
   video,
@@ -25,7 +23,6 @@ export default function MainCard({
   navigation,
 }: Props) {
   const { t } = useTranslation();
-
   const DeshanaItem = ({ deshana }: { deshana: Deshana }) => (
     <DeshanaCard
       deshana={deshana}
@@ -41,7 +38,6 @@ export default function MainCard({
       isLarge={false}
     />
   );
-
   return (
     <View>
       <TouchableOpacity

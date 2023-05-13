@@ -9,12 +9,10 @@ import { RootNavigation } from "../../navigations/RootNavigation";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 type splashScreenProp = StackNavigationProp<RootNavigation, 'Auth'>;
 function SplashScreen() {
   const [animating, setAnimating] = useState(true);
   const navigation = useNavigation<splashScreenProp>();
-
   useEffect(() => {
     setTimeout(function () {
       setAnimating(false);

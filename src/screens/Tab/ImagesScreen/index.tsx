@@ -15,7 +15,6 @@ import { BottomTabNavigation } from "../../../navigations/BottomTabNavigation";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { Information } from "../../../client/Interface";
 import Spinner from "react-native-loading-spinner-overlay/lib";
-
 const header = require("../../../assest/images/header_two.png");
 const body = require("../../../assest/images/body_three.png");
 const windowWidth = Dimensions.get("window").width;

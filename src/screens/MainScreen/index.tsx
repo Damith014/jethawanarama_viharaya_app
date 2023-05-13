@@ -82,5 +82,4 @@ function MainScreen() {
     </SafeAreaView>
   );
 }
-
 export default MainScreen;

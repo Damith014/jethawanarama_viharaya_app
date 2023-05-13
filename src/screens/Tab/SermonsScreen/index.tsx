@@ -1,11 +1,9 @@
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { t } from "i18next";
 import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import {
   StatusBar,
   View,
-  ScrollView,
   ImageBackground,
   Dimensions,
   FlatList,
