@@ -419,7 +419,7 @@ function AboutScreen() {
             />
           </View>
           <View style={{ marginTop: 10, marginBottom: 10 }}>
-            <Button onPress={() => send()} label={t("send")} isAbout={true} />
+            <Button onPress={() => void send()} label={t("send")} isAbout={true} />
           </View>
         </View>
       </ScrollView>

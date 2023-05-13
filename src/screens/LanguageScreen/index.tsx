@@ -95,7 +95,7 @@ function LanguageScreen() {
         </View>
 
         <View style={styles.buttonContainer}>
-          <Button onPress={() => goHome()} label="Start" isAbout={false} />
+          <Button onPress={() => void goHome()} label="Start" isAbout={false} />
         </View>
       </View>
     </View>

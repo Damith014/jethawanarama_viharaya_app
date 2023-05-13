@@ -69,7 +69,7 @@ function HomeScreen() {
         useNativeDriver: true,
       }).start();
     }
-    getDashboardData();
+    getDashboardData().catch(error=>{});
     async function getDashboardData() {
       setIsLoading(true);
       let response = await Client.dashboard();
@@ -149,7 +149,7 @@ function HomeScreen() {
       navigation={navigation}
     />
   );
-  const EmptyListMessage = ({}) => {
+  const EmptyListMessage = () => {
     return (
       <View>
         {!isLoading && <EmptyCard title={t("sorry")} body={t("message")} />}

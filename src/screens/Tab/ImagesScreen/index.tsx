@@ -46,7 +46,7 @@ function ImageScreen() {
       ></Image>
     </View>
   );
-  const EmptyListMessage = ({}) => {
+  const EmptyListMessage = () => {
     return <EmptyCard title={t("sorry")} body={t("message")} />;
   };
   return (

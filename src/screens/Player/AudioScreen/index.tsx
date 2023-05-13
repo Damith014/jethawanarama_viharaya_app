@@ -28,7 +28,7 @@ function AudioScreen(){
     mediaLowSize: deshana.mediaLowSize,
   };
   useEffect(() => {
-    setup();
+    setup().catch(error=>{});
   }, []);
   const setup = async () => {
     await TrackPlayer.setupPlayer({});
@@ -91,7 +91,7 @@ function AudioScreen(){
 
   }
   const downloadmp3 = (url: string) => {
-    requestToPermissions(url);
+    requestToPermissions(url).catch(error=>{});
   }
   const requestToPermissions = async (url: string) => {
     try {
@@ -146,9 +146,9 @@ function AudioScreen(){
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
-        } else {
         }
       } else if (result.action === Share.dismissedAction) {
+        console.log("dismiss");
       }
     } catch (error) {
       // alert(error.message);

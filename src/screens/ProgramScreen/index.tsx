@@ -44,7 +44,7 @@ function ProgramScreen() {
       isLeft={(index % 2) ? false : true}
     />
   );
-  const EmptyListMessage = ({}) => {
+  const EmptyListMessage = () => {
     return (
       <View>
         {!isLoading && <EmptyCard title={t("sorry")} body={t("message")} />}

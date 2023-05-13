@@ -77,7 +77,7 @@ export default function DownloadCard({
     }
   };
   const downloadClicked = async () => {
-    requestToPermissions(result.mediaUrl);
+    requestToPermissions(result.mediaUrl).catch(error=>{})
   };
   const requestToPermissions = async (url: any) => {
     try {
