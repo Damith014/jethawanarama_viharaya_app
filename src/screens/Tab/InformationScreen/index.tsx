@@ -13,6 +13,7 @@ import Spinner from "react-native-loading-spinner-overlay/lib";
 import { BottomTabNavigation } from "../../../navigations/BottomTabNavigation";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { Information } from "../../../client/Interface";
+import { styles } from "./styles";
 const header = require("../../../assest/images/header.png");
 const windowWidth = Dimensions.get("window").width;
 type tabScreenRouteProp = RouteProp<BottomTabNavigation, "Information">;
@@ -35,7 +36,7 @@ function InformationScreen() {
     }
   }, []);
   return (
-    <ScrollView style={{ flex: 10, backgroundColor: "#ffff" }}>
+    <ScrollView style={styles.container}>
       <Spinner
         visible={isLoading}
         textContent={"Loading..."}
@@ -56,47 +57,20 @@ function InformationScreen() {
       </View>
       <View style={{ flex: 2 }}>
         <View
-          style={{
-            flex: 1,
-            marginHorizontal: 16,
-            top: -40,
-            paddingTop: 15,
-            width: windowWidth - 32,
-            borderRadius: 6,
-            position: "absolute",
-            backgroundColor: "#ffff",
-            height: 200,
-          }}
+          style={styles.view}
         >
           <Text
-            style={{
-              textAlign: "center",
-              fontSize: 18,
-              fontWeight: "400",
-              color: "#6F6F6F",
-            }}
+            style={styles.text_title}
           >
             {information?.title ?? ""}
           </Text>
           <Text
-            style={{
-              textAlign: "justify",
-              fontSize: 14,
-              fontWeight: "400",
-              color: "#474747",
-              marginTop: 15,
-            }}
+            style={styles.text_sub}
           >
             {information?.description ?? ""}
           </Text>
           <WebView
-            style={{
-              textAlign: "justify",
-              fontSize: 14,
-              fontWeight: "400",
-              color: "#474747",
-              marginTop: 15,
-            }}
+            style={styles.text_sub}
             originWhitelist={["*"]}
             source={{ html: information?.contents ?? "<div></div>" }}
           />
