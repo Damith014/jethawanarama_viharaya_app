@@ -21,15 +21,15 @@ function LanguageScreen() {
     { label: "English", value: "en" },
   ];
   useEffect(() => {
-    setting().catch(error=>{})
-    async function setting() {
-      await selectLanguage("lk");
-        const backHandler = BackHandler.addEventListener(
-          "hardwareBackPress",
-          backAction
-        );
-        return () => backHandler.remove();
-    }
+    // setting().catch(error=>{})
+    // async function setting() {
+    //   await selectLanguage("lk");
+    //     const backHandler = BackHandler.addEventListener(
+    //       "hardwareBackPress",
+    //       backAction
+    //     );
+    //     return () => backHandler.remove();
+    // }
   }, []);
   const backAction = () => {
     BackHandler.exitApp();
