@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { styles } from "./styles";
 import Client from "../../client/Client";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-
 import DownloadCard from "../../component/Cards/DownloadCard";
 import EmptyCard from "../../component/Cards/EmptyCard";
 import VideoCard from "../../component/Cards/VideoCard";
@@ -14,7 +13,6 @@ import { BottomTabNavigation } from "../../navigations/BottomTabNavigation";
 import { Deshana, Video } from "../../client/Interface";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootNavigation } from "../../navigations/RootNavigation";
-
 type sermonsScreenRouteProp = RouteProp<BottomTabNavigation, "SermonsList">;
 type mainScreenProp = StackNavigationProp<RootNavigation, "Main">;
 function SermonsListScreen() {
@@ -23,13 +21,10 @@ function SermonsListScreen() {
   const [active, setActive] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { t } = useTranslation();
-  
   let transformX = useRef(new Animated.Value(0)).current;
-
-  const [audios, setAudio] = useState([]);
-  const [videos, setVideo] = useState([]);
+  const [audios, setAudio] = useState<any>([]);
+  const [videos, setVideo] = useState<any>([]);
   const [titile, setTitle] = useState("");
-
   useEffect(() => {
     getLanguage();
     async function getLanguage() {
@@ -43,7 +38,7 @@ function SermonsListScreen() {
         setIsLoading(true);
         let response = await Client.deshana(
           medium ?? "audio",
-          route.params.program_id
+          route.params?.program_id
         );
         if (response.status == 200) {
           setAudio(response.sermon?.deshana as []);
@@ -73,9 +68,8 @@ function SermonsListScreen() {
       }).start();
     }
   }, [active]);
-
   const DeshanaItem = ({ deshana }: { deshana: Deshana }) => (
-    <DownloadCard result={deshana} isFavorite={false} navigation={navigation} />
+    <DownloadCard result={deshana} isFavorite={false} navigation={navigation} isDownload={true} />
   );
   const VideoItem = ({ video }: { video: Video }) => (
     <VideoCard
@@ -85,14 +79,7 @@ function SermonsListScreen() {
       navigation={navigation}
     />
   );
-  const rotationX = transformX.interpolate({
-    inputRange: [0, 1],
-    outputRange: [2, 58],
-  });
-  const changedMedium = async (medium: boolean) => {
-    setActive(medium);
-  };
-  const EmptyListMessage = ({}) => {
+  const EmptyListMessage = () => {
     return (
       <View>
         {!isLoading && <EmptyCard title={t("sorry")} body={t("message")} />}
@@ -101,72 +88,12 @@ function SermonsListScreen() {
   };
   return (
     <SafeAreaView style={styles.content}>
-      {/* <ScrollView style={styles.content}> */}
       <View style={styles.content_sub}>
         <Spinner
           visible={isLoading}
           textContent={"Loading..."}
           textStyle={{ color: "#000" }}
         />
-        {/* <View style={[styles.content_header, { display: 'none' }]}>
-          <View style={{ flex: 2 }} >
-          </View>
-          <View style={{ flex: 1 }} >
-            <Text>දේශනා මාධ්‍ය</Text>
-            <View style={{
-              flexDirection: 'row',
-              position: 'relative',
-              height: 30,
-              borderRadius: 8,
-              backgroundColor: '#7676801F',
-              width: 110,
-              marginTop: 9,
-              marginLeft: 0
-            }}>
-              <Animated.View
-                style={{
-                  position: 'absolute',
-                  height: 25,
-                  top: 2,
-                  bottom: 3,
-                  borderRadius: 7,
-                  width: 50,
-                  transform: [
-                    {
-                      translateX: rotationX
-                    }
-                  ],
-                  backgroundColor: '#FFFFFF',
-                  shadowColor: "#000",
-                  shadowOffset: {
-                    width: 0,
-                    height: 8,
-                  },
-                  shadowOpacity: 0.2,
-                  shadowRadius: 8,
-                }}
-              />
-              <TouchableOpacity style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center'
-              }} onPress={() => changedMedium(false)}>
-                <Text style={styles.switch_active}>
-                  ශව්‍ය
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={{
-                flex: 1,
-                justifyContent: 'center',
-                alignItems: 'center'
-              }} onPress={() => changedMedium(true)}>
-                <Text>
-                  දෘශ්‍ය
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View> */}
         <Text style={styles.content_title}>{titile}</Text>
         {active && (
           <View style={{ marginTop: 10 }}>
@@ -194,12 +121,6 @@ function SermonsListScreen() {
           </View>
         )}
       </View>
-      {/* </ScrollView> */}
-      {/* {!active && 
-        <View style={{backgroundColor:'red',height:80}}>
-          <PlayCard/>
-        </View>
-      } */}
     </SafeAreaView>
   );
 }

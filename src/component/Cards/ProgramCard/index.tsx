@@ -2,15 +2,13 @@ import React from "react";
 import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { Program } from "../../../client/Interface";
-
 type Props = {
   program: Program;
   onPress: any;
   isLeft: boolean;
 };
-
 export default function ProgramCard({ program, onPress, isLeft }: Props) {
-  const image = { uri: program.coverImage };
+  const image = { uri: program.coverImage ?? "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"};
   if (isLeft) {
     return (
       <TouchableOpacity

@@ -25,16 +25,14 @@ export const styles = StyleSheet.create({
         paddingRight:3,
         paddingLeft:3,
         color:"#FFFFFF",
-        lineHeight:18,
         textAlign:'right',
         backgroundColor:'#000000',
-        alignSelf: 'flex-end', 
+        alignSelf: 'flex-end',
     },
     content_sub_text:{
         fontSize:14,
         fontWeight:'700',
         color:"#000000",
-        lineHeight:16,
         marginTop:6
     },
   });

@@ -3,21 +3,17 @@ export interface Token {
   refreshToken: string;
   error: string;
 }
-
 //For menu
 export type Menu = item[];
-
 export interface item {
   id: number;
   title: string;
   icon: string;
 }
-
 //For Program
 export interface Programs {
   programs: Program[]
 }
-
 export interface Program {
   id: number
   title: string
@@ -27,21 +23,17 @@ export interface Program {
   tabs: Tab[]
   photos?: string[]
 }
-
 export interface Tab {
   id: number
   title: string
   icon: string
 }
-
-
 //For about
 export interface About {
   success: boolean
   errorMessage: any
   result: Contact
 }
-
 export interface Contact {
   introduction: string
   phone: string[]
@@ -53,7 +45,6 @@ export interface Contact {
   social: Social[]
   mapLink: string
 }
-
 export interface Address {
   addressLine1: string
   addressLine2: string
@@ -61,37 +52,31 @@ export interface Address {
   city: string
   info: string
 }
-
 export interface Social {
   name: string
   url: string
   title: string
 }
-
 //For contact
 export interface Response {
   success: boolean
   errorMessage: any
   result: Message
 }
-
 export interface Message {
   message: string
 }
-
 //For deshana
 export interface Dashboard {
   deshana: Deshanas[]
   videos: Videos[]
 }
-
 export interface Deshanas {
   category: string
   categoryAlias: string
   description?: string
   deshana: Deshana[]
 }
-
 export interface Deshana {
   id: string
   title: string
@@ -104,14 +89,12 @@ export interface Deshana {
   pdfUrl: string
   pdfSize: string
 }
-
 export interface Videos {
   id: string
   title: string
   description: string
   videos: Video[]
 }
-
 export interface Video {
   videoId: string
   title: string
@@ -119,7 +102,6 @@ export interface Video {
   duration: string
   publishedDate: string
 }
-
 //For Information
 export interface Information {
   id: number
@@ -130,14 +112,12 @@ export interface Information {
   menu: any[]
   photos: string[]
 }
-
 //For Search
 export interface Search {
   success: boolean
   errorMessage: string
   result: Deshana[]
 }
-
 //For Sermon
 export interface Sermon {
   title: string

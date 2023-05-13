@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         borderRadius: 5,
         marginTop:10,
         height:150,
-        width:'90%'
+        width: 250
     },
     content_sub_header: {
         color: '#000000',

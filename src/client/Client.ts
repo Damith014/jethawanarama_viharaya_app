@@ -42,6 +42,8 @@ const handleMenuResponse = (response: any) => {
   };
 };
 const handleProgramsResponse = (response: any) => {
+  console.log(response);
+  
   return {
     programs: response.data as Programs,
     status: response && response.status ? response.status : 500,
@@ -49,6 +51,7 @@ const handleProgramsResponse = (response: any) => {
   };
 };
 const handleAboutResponse = (response: any) => {
+  
   return {
     about: response.data as About,
     status: response && response.status ? response.status : 500,
@@ -157,7 +160,6 @@ const Client = {
     }
     let url = `${baseURL()}api/v2/mobile/${language}/programs`;
     console.log(url);
-    
     return axios
       .get(url, { headers: { accessToken: token } })
       .then(handleProgramsResponse)
@@ -222,6 +224,8 @@ const Client = {
       console.log("error");
     }
     let url = `${baseURL()}api/v2/mobile/${language}/programs/${program_id}`;
+    console.log(url);
+    
     return axios
       .get(url,{ headers: { accessToken: token } })
       .then(handleInformationresponse)
@@ -252,6 +256,8 @@ const Client = {
           language = (await AsyncStorage.getItem('semo_language')) as string;
       }catch(error){}
       let url = `${baseURL()}api/v2/mobile/${language}/deshana/${type}/${id}`;
+      console.log(url);
+      
       return axios
         .get(url,{headers:{'accessToken':token}})
         .then(handleDeshanresponse)

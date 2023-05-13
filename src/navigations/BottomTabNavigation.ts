@@ -3,4 +3,5 @@ export type BottomTabNavigation = {
     Image: {program_id: string};
     Sermons: {program_id: string};
     Advance: undefined;
+    SermonsList: undefined;
 };

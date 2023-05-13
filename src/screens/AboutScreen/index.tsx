@@ -15,7 +15,6 @@ import Client from "../../client/Client";
 import Button from "../../component/Button";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import { About } from "../../client/Interface";
-
 const whatsapp = require("../../assest/icons/social/whatsapp.png");
 const viber = require("../../assest/icons/social/viber.png");
 const skype = require("../../assest/icons/social/skype.png");
@@ -23,18 +22,15 @@ const google = require("../../assest/icons/social/google.png");
 const facebook = require("../../assest/icons/social/facebook.png");
 const youtube = require("../../assest/icons/social/youtube.png");
 const podcast = require("../../assest/icons/social/podcast.png");
-
 function AboutScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const [about, setAbout] = useState<About | null>();
-
   const [data, setData] = useState({
     name: "",
     phone: "",
     email: "",
     message: "",
   });
-
   useEffect(() => {
     getAbout();
     async function getAbout() {
@@ -48,7 +44,6 @@ function AboutScreen() {
       }
     }
   }, []);
-
   const send = async () => {
     if (
       data.name.trim() != "" &&
@@ -72,7 +67,7 @@ function AboutScreen() {
         ]);
       } else {
         setIsLoading(false);
-        Alert.alert("Error", response.response?.result.message ?? "", [
+        Alert.alert("Error", response.response?.errorMessage ?? "", [
           { text: "OK", onPress: () => console.log("OK Pressed") },
         ]);
       }
@@ -157,29 +152,6 @@ function AboutScreen() {
                 >
                   {about?.result.phone[1]}
                 </Text>
-              </TouchableOpacity>
-            </View>
-            <View
-              style={{
-                justifyContent: "center",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <TouchableOpacity onPress={() => openLink("whatsapp")}>
-                <Image
-                  source={whatsapp}
-                  style={{ width: 30, height: 30, marginRight: 5 }}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => openLink("skype")}>
-                <Image
-                  source={skype}
-                  style={{ width: 30, height: 30, marginRight: 5 }}
-                />
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => openLink("viber")}>
-                <Image source={viber} style={{ width: 30, height: 30 }} />
               </TouchableOpacity>
             </View>
           </View>
@@ -286,6 +258,21 @@ function AboutScreen() {
                 marginTop: 15,
               }}
             >
+            <TouchableOpacity onPress={() => openLink("whatsapp")}>
+              <Image
+                source={whatsapp}
+                style={{ width: 30, height: 30, marginRight: 5 }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => openLink("skype")}>
+              <Image
+                source={skype}
+                style={{ width: 30, height: 30, marginRight: 5 }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => openLink("viber")}>
+              <Image source={viber} style={{ width: 30, height: 30, marginRight: 5  }} />
+            </TouchableOpacity>
               <TouchableOpacity onPress={() => openLink("facebook")}>
                 <Image
                   source={facebook}
@@ -356,6 +343,7 @@ function AboutScreen() {
             <TextInput
               placeholder={t("your_contact_number")}
               placeholderTextColor="#8E8E93"
+              keyboardType="numeric"
               style={{
                 width: "98%",
                 fontWeight: "400",
@@ -386,6 +374,7 @@ function AboutScreen() {
             <TextInput
               placeholder={t("your_email")}
               placeholderTextColor="#8E8E93"
+              keyboardType="email-address"
               style={{
                 width: "98%",
                 fontWeight: "400",

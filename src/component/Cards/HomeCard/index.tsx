@@ -2,14 +2,12 @@ import React from "react";
 import { View, Text, ImageBackground, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { Program } from "../../../client/Interface";
-
 type Props = {
   program: Program;
   onPress: any;
 };
-
 export default function HomeCard({ program, onPress }: Props) {
-  const image = { uri: program.coverImage };
+  const image = { uri: program.coverImage ?? "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png"};
   return (
     <>
     {program.id != 1000 &&

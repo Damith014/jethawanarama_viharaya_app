@@ -19,7 +19,6 @@ import Spinner from "react-native-loading-spinner-overlay/lib";
 const header = require("../../../assest/images/header_two.png");
 const body = require("../../../assest/images/body_three.png");
 const windowWidth = Dimensions.get("window").width;
-
 type tabScreenRouteProp = RouteProp<BottomTabNavigation, "Image">;
 function ImageScreen() {
   const route = useRoute<tabScreenRouteProp>();
@@ -27,9 +26,8 @@ function ImageScreen() {
   const [isLoading, setIsLoading] = useState(true);
   const { t } = useTranslation();
   const [information, setInformation] = useState<Information | null>();
-
   useEffect(() => {
-    getInformation();
+    getInformation().catch(error => {})
     async function getInformation() {
       setIsLoading(true);
       let response = await Client.information(program_id);
@@ -41,7 +39,6 @@ function ImageScreen() {
       }
     }
   }, []);
-
   const ImageItem = ({ photo }: { photo: string }) => (
     <View style={{ flex: 1, padding: 5 }}>
       <Image
@@ -86,7 +83,7 @@ function ImageScreen() {
           <FlatList
             style={{ marginBottom: 50 }}
             data={information?.photos ?? []}
-            numColumns={2}
+            numColumns={1}
             renderItem={({ item }) => <ImageItem photo={item} />}
             nestedScrollEnabled={true}
             ListEmptyComponent={EmptyListMessage}

@@ -13,21 +13,18 @@ import Spinner from "react-native-loading-spinner-overlay/lib";
 import Client from "../../client/Client";
 import { Program } from "../../client/Interface";
 import HomeCard from "../../component/Cards/HomeCard";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { RootNavigation } from "../../navigations/RootNavigation";
-
 const image_1 = require("../../assest/images/image_1.png");
 const image_6 = require("../../assest/images/background_image.png");
-
 type mainScreenProp = StackNavigationProp<RootNavigation, "Main">;
 function MainScreen() {
   const [isLoading, setIsLoading] = useState(false);
-  const [programs, setPrograms] = useState([]);
+  const [programs, setPrograms] = useState<any>([]);
   const navigation = useNavigation<mainScreenProp>();
   useEffect(() => {
-    getProgram();
+    getProgram().catch(error => {});
     async function getProgram() {
       setIsLoading(true);
       let response = await Client.program();
@@ -39,16 +36,16 @@ function MainScreen() {
       }
     }
   }, []);
-
   const Item = ({ program }: { program: Program }) => (
     <HomeCard
       program={program}
       onPress={() => {
+        console.log(program.id.toString());
+        
         navigation.navigate("Tab", { program_id: program.id.toString()});
       }}
     />
   );
-
   return (
     <SafeAreaView style={styles.content}>
       <ScrollView

@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import {
   View,
   TextInput,
-  Text,
-  TouchableOpacity,
   FlatList,
   SafeAreaView,
 } from "react-native";
@@ -19,16 +17,13 @@ import { Deshana } from "../../client/Interface";
 import { RootNavigation } from "../../navigations/RootNavigation";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { useNavigation } from "@react-navigation/native";
-
 type searchScreenProp = StackNavigationProp<RootNavigation, "Search">;
 function SearchScreen() {
   const navigation = useNavigation<searchScreenProp>();
   const [text, setText] = useState("");
-  const [isAdvance, setAdvance] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [search, setSearch] = useState([]);
+  const [search, setSearch] = useState<any>([]);
   const { t } = useTranslation();
-
   const changeValue = async (text: string) => {
     setText(text);
     setIsLoading(false);
@@ -39,13 +34,9 @@ function SearchScreen() {
     setIsLoading(false);
   };
   const Result = ({ result }: { result: Deshana }) => (
-    <DownloadCard result={result} isFavorite={true} navigation={navigation} />
+    <DownloadCard result={result} isFavorite={false} navigation={navigation} isDownload={false} />
   );
-
-  const advanceClicked = (value: boolean) => {
-    setAdvance(value);
-  };
-  const EmptyListMessage = ({}) => {
+  const EmptyListMessage = () => {
     return (
       <View>
         {search.length == 0 && (
@@ -95,65 +86,7 @@ function SearchScreen() {
             />
           </View>
         </View>
-        <View>
-          <TouchableOpacity onPress={() => advanceClicked(!isAdvance)}>
-            <Text style={{ textAlign: "right", marginRight: 14 }}>
-              {t("advanced_search")}
-            </Text>
-          </TouchableOpacity>
-        </View>
-        {isAdvance ? (
-          <View style={{ marginTop: 20, padding: 16 }}>
-            <TouchableOpacity
-              style={{
-                height: 40,
-                justifyContent: "center",
-                flexDirection: "row",
-              }}
-            >
-              <View style={{ justifyContent: "center", flex: 1 }}>
-                <Text style={{ marginRight: 14 }}>{t("date_of_sermon")}</Text>
-              </View>
-              <View style={{ justifyContent: "center" }}>
-                <Ionicons name="chevron-forward" size={20} color="#8E8E93" />
-              </View>
-            </TouchableOpacity>
-            <View style={{ height: 0.5, backgroundColor: "#C6C6C8" }}></View>
-            <TouchableOpacity
-              style={{
-                height: 40,
-                justifyContent: "center",
-                flexDirection: "row",
-              }}
-            >
-              <View style={{ justifyContent: "center", flex: 1 }}>
-                <Text style={{ marginRight: 14 }}>{t("preacher")}</Text>
-              </View>
-              <View style={{ justifyContent: "center" }}>
-                <Ionicons name="chevron-forward" size={20} color="#8E8E93" />
-              </View>
-            </TouchableOpacity>
-            <View style={{ height: 0.5, backgroundColor: "#C6C6C8" }}></View>
-            <TouchableOpacity
-              style={{
-                height: 40,
-                justifyContent: "center",
-                flexDirection: "row",
-              }}
-            >
-              <View style={{ justifyContent: "center", flex: 1 }}>
-                <Text style={{ marginRight: 14 }}>{t("programme")}</Text>
-              </View>
-              <View style={{ justifyContent: "center" }}>
-                <Ionicons name="chevron-forward" size={20} color="#8E8E93" />
-              </View>
-            </TouchableOpacity>
-            <View style={{ height: 0.5, backgroundColor: "#C6C6C8" }}></View>
-          </View>
-        ) : (
-          <></>
-        )}
-        <View style={{ marginTop: 20, padding: 16 }}>
+        <View style={{ padding: 16 }}>
           <FlatList
             style={{ marginBottom: 40 }}
             data={search}

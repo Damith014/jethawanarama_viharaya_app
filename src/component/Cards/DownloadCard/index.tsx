@@ -13,26 +13,25 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import RNFetchBlob from "rn-fetch-blob";
 import Spinner from "react-native-loading-spinner-overlay";
 import { Deshana } from "../../../client/Interface";
-
 const download = require("../../../assest/icons/download.png");
 const favorite = require("../../../assest/icons/favorite.png");
 const favorite_red = require("../../../assest/icons/red_heart.png");
-
 type Props = {
   result: Deshana;
   isFavorite: boolean;
+  isDownload: boolean;
   navigation: any;
 };
 export default function DownloadCard({
   result,
   isFavorite,
+  isDownload,
   navigation,
 }: Props) {
   const [isfavo, setFavorite] = useState(false);
   const [isDownloading, setIsDownlading] = useState(false);
-
   useEffect(() => {
-    getFavorite();
+    getFavorite().catch(error => {});
     async function getFavorite() {
       try {
         let json = await AsyncStorage.getItem("favorite");
@@ -49,7 +48,6 @@ export default function DownloadCard({
       }
     }
   }, []);
-
   const favoriteClicked = async () => {
     let deleted = false;
     try {
@@ -81,7 +79,6 @@ export default function DownloadCard({
   const downloadClicked = async () => {
     requestToPermissions(result.mediaUrl);
   };
-
   const requestToPermissions = async (url: any) => {
     try {
       if (Platform.OS == "android") {
@@ -128,7 +125,6 @@ export default function DownloadCard({
         }
       });
   };
-
   return (
     <TouchableOpacity
       onPress={() => {
@@ -165,31 +161,35 @@ export default function DownloadCard({
           </View>
         </Spinner>
       )}
-      <View style={{ flexDirection: "row", height: 70 }}>
+      <View style={{ flexDirection: "row", flex: 1, marginBottom: 16}}>
         <View style={{ flex: 1 }}>
           <Text style={styles.content_header_text}>{result.title}</Text>
           <Text style={styles.content_sub_text}>{result.publishedDate + " | " + result.sermoniser}</Text>
         </View>
-        <View style={styles.content_image}>
-          {isFavorite && (
-            <TouchableOpacity onPress={() => favoriteClicked()}>
-              {isfavo ? (
-                <Image
-                  source={favorite_red}
-                  style={styles.content_favorite_image}
-                ></Image>
-              ) : (
-                <Image
-                  source={favorite}
-                  style={styles.content_favorite_image}
-                ></Image>
-              )}
-            </TouchableOpacity>
-          )}
-          <TouchableOpacity onPress={() => downloadClicked()}>
-            <Image source={download}></Image>
-          </TouchableOpacity>
-        </View>
+        {isFavorite || isDownload &&
+          <View style={styles.content_image}>
+            {isFavorite && (
+              <TouchableOpacity onPress={() => favoriteClicked()}>
+                {isfavo ? (
+                  <Image
+                    source={favorite_red}
+                    style={styles.content_favorite_image}
+                  ></Image>
+                ) : (
+                  <Image
+                    source={favorite}
+                    style={styles.content_favorite_image}
+                  ></Image>
+                )}
+              </TouchableOpacity>
+            )}
+            {isDownload &&
+              <TouchableOpacity onPress={() => downloadClicked()}>
+                <Image source={download}></Image>
+              </TouchableOpacity>
+            }
+          </View>
+        }
       </View>
     </TouchableOpacity>
   );

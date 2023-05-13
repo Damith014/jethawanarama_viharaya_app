@@ -2,22 +2,18 @@ import React from "react";
 import { View, Text, TouchableOpacity, ImageBackground } from "react-native";
 import { styles } from "./styles";
 import { Video } from "../../../client/Interface";
-const bgImage = require("../../../assest/images/sample_1.png");
-
 type Props = {
   video: Video;
   onPress: any;
   isLarge: boolean;
   navigation: any;
 };
-
 export default function VideoCard({
   video,
   onPress,
   isLarge,
   navigation,
 }: Props) {
-  
   function convert_time(duration: string): string {
     let matches = duration.match(/[0-9]+[HMS]/g);
     let hours = 0,
@@ -26,7 +22,6 @@ export default function VideoCard({
     matches?.forEach(function (part) {
       let unit = part.charAt(part.length - 1);
       let amount = parseInt(part.slice(0, -1));
-
       switch (unit) {
         case "H":
           hours = amount;
@@ -46,7 +41,6 @@ export default function VideoCard({
       return minutes + ":" + seconds;
     }
   }
-
   return (
     <TouchableOpacity
       style={isLarge ? styles.content_main1 : styles.content_main}

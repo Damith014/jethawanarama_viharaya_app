@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   StackNavigationProp,
   createStackNavigator,
@@ -15,12 +15,10 @@ import InformationScreen from "../screens/Tab/InformationScreen";
 import "../assest/i18n/i18n";
 import SermonsScreen from "../screens/Tab/SermonsScreen";
 import ImageScreen from "../screens/Tab/ImagesScreen";
-
 const BottomTab = createBottomTabNavigator<BottomTabNavigation>();
 type tabScreenRouteProp = RouteProp<RootNavigation, "Tab">;
 type tabScreenProp = StackNavigationProp<RootNavigation, "Tab">;
 const Stack = createStackNavigator<BottomTabNavigation>();
-
 function InformationScreenStack() {
   const route = useRoute<tabScreenRouteProp>();
   const program_id = route.params.program_id as string;
@@ -38,7 +36,6 @@ function InformationScreenStack() {
     </Stack.Navigator>
   );
 }
-
 function ImageScreenStack() {
   const route = useRoute<tabScreenRouteProp>();
   const program_id = route.params.program_id as string;
@@ -56,7 +53,6 @@ function ImageScreenStack() {
     </Stack.Navigator>
   );
 }
-
 function SermonScreenStack() {
   const route = useRoute<tabScreenRouteProp>();
   const program_id = route.params.program_id as string;
@@ -74,13 +70,11 @@ function SermonScreenStack() {
     </Stack.Navigator>
   );
 }
-
 function BottomTabStack() {
   const navigation = useNavigation<tabScreenProp>();
   const route = useRoute<tabScreenRouteProp>();
   const program_id = route.params.program_id as string;
   const { t } = useTranslation();
-
   return (
     <BottomTab.Navigator>
       <>

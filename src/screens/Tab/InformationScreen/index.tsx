@@ -7,25 +7,22 @@ import {
   ImageBackground,
   Dimensions,
 } from "react-native";
-// import { WebView } from "react-native-webview";
+import { WebView } from "react-native-webview";
 import Client from "../../../client/Client";
 import Spinner from "react-native-loading-spinner-overlay/lib";
 import { BottomTabNavigation } from "../../../navigations/BottomTabNavigation";
 import { RouteProp, useRoute } from "@react-navigation/native";
 import { Information } from "../../../client/Interface";
-import HTMLView from "react-native-htmlview";
 const header = require("../../../assest/images/header.png");
 const windowWidth = Dimensions.get("window").width;
-
 type tabScreenRouteProp = RouteProp<BottomTabNavigation, "Information">;
 function InformationScreen() {
   const route = useRoute<tabScreenRouteProp>();
   const program_id = route.params.program_id as string;
   const [isLoading, setIsLoading] = useState(false);
   const [information, setInformation] = useState<Information | null>();
-
   useEffect(() => {
-    getInformation();
+    getInformation().catch(error => {});
     async function getInformation() {
       setIsLoading(true);
       let response = await Client.information(program_id);
@@ -37,7 +34,6 @@ function InformationScreen() {
       }
     }
   }, []);
-
   return (
     <ScrollView style={{ flex: 10, backgroundColor: "#ffff" }}>
       <Spinner
@@ -93,11 +89,6 @@ function InformationScreen() {
           >
             {information?.description ?? ""}
           </Text>
-          <HTMLView
-            value={
-              information?.contents ?? "<div style='font-size:16px'></div>"
-            }
-          />
           {/* <WebView
             style={{
               textAlign: "justify",
@@ -107,7 +98,7 @@ function InformationScreen() {
               marginTop: 15,
             }}
             originWhitelist={["*"]}
-            source={{ html: "<div style='font-size:16px'></div>" }}
+            source={{ html: information?.contents ?? "<div></div>" }}
           /> */}
         </View>
       </View>
