@@ -4,12 +4,12 @@ import {
   FlatList,
   ImageBackground,
   SafeAreaView,
-  ScrollView,
   Text,
   View,
 } from "react-native";
 import { styles } from "./styles";
 import Spinner from "react-native-loading-spinner-overlay/lib";
+import { ScrollView } from 'react-native-virtualized-view';
 import Client from "../../client/Client";
 import { Program } from "../../client/Interface";
 import HomeCard from "../../component/Cards/HomeCard";
@@ -37,20 +37,24 @@ function MainScreen() {
     }
   }, []);
   const Item = ({ program }: { program: Program }) => (
-    <HomeCard
-      program={program}
-      onPress={() => {
-        console.log(program.id.toString());
-        
-        navigation.navigate("Tab", { program_id: program.id.toString()});
-      }}
-    />
+    <>
+      {program != null &&
+        <HomeCard
+          program={program}
+          onPress={() => {
+            console.log(program.id.toString());
+            navigation.navigate("Tab", { program_id: program.id.toString()});
+          }}
+      />
+      }
+    </>
   );
   return (
-    <SafeAreaView style={styles.content}>
+    // <SafeAreaView style={styles.content}>
       <ScrollView
         style={{ backgroundColor: "#FFFFFF", flex: 1 }}
         nestedScrollEnabled={true}
+        horizontal ={false}
       >
         <Spinner
           visible={isLoading}
@@ -71,7 +75,7 @@ function MainScreen() {
               <FlatList
                 style={{ marginBottom: 0 }}
                 data={programs}
-                keyExtractor={item => item.id}
+                keyExtractor={item => item?.id}
                 renderItem={({ item }) => <Item program={item} />}
                 nestedScrollEnabled={true}
               />
@@ -79,7 +83,7 @@ function MainScreen() {
           </View>
         </ImageBackground>
       </ScrollView>
-    </SafeAreaView>
+    // </SafeAreaView>
   );
 }
 export default MainScreen;

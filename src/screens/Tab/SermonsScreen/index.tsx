@@ -30,11 +30,10 @@ function SermonsScreen() {
     getDeshana().catch((error) => {});
     async function getDeshana() {
       try {
-        let medium = await AsyncStorage.getItem("medium");
         setIsLoading(true);
-        let response = await Client.deshana(medium ?? "audio", program_id);
+        let response = await Client.deshana(program_id);
         if (response.status == 200) {
-          setAudio(response.sermon?.deshana as []);
+          setAudio(response.sermon);
         } else {
           setAudio([]);
         }
@@ -76,7 +75,7 @@ function SermonsScreen() {
           style={styles.view}
         >
           <FlatList
-            style={{ marginBottom: 50 }}
+            style={{ marginBottom: 50, marginLeft:16, marginRight:4, marginTop:8 }}
             data={audios ?? []}
             numColumns={1}
             renderItem={({ item }) => <DeshanaItem deshana={item} />}

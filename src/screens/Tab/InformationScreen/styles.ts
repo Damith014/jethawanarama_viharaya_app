@@ -7,15 +7,13 @@ export const styles=StyleSheet.create({
     view:{
         flex: 1,
         marginHorizontal: 16,
-        top: -40,
         paddingTop: 15,
         width: windowWidth - 32,
         borderRadius: 6,
-        position: "absolute",
         backgroundColor: "#ffff",
-        height: 200,
     },
     text_title:{
+        marginTop: 32,
         textAlign: "center",
         fontSize: 18,
         fontWeight: "400",
@@ -27,5 +25,12 @@ export const styles=StyleSheet.create({
         fontWeight: "400",
         color: "#474747",
         marginTop: 15,
+        lineHeight: 20
+    },
+    image: {
+        resizeMode: 'contain',
+        height: 200,
+        width:'100%',
+        // backgroundColor:"#474747"
     }
 });

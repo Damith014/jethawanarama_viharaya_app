@@ -45,14 +45,15 @@ function InformationScreen() {
       <ImageBackground source={header} style={{ height: 100 }}>
         <StatusBar translucent barStyle="light-content" />
       </ImageBackground>
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1, marginTop: 40 }}>
         <ImageBackground
+        resizeMode= "contain"
           source={{
             uri:
               information?.coverImage ??
               "https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png",
           }}
-          style={{ height: 200 }}
+          style={styles.image}
         ></ImageBackground>
       </View>
       <View style={{ flex: 2 }}>
@@ -69,11 +70,11 @@ function InformationScreen() {
           >
             {information?.description ?? ""}
           </Text>
-          <WebView
+          {/* <WebView
             style={styles.text_sub}
             originWhitelist={["*"]}
             source={{ html: information?.contents ?? "<div></div>" }}
-          />
+          /> */}
         </View>
       </View>
     </ScrollView>

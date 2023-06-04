@@ -1,7 +1,7 @@
 import {StyleSheet,Dimensions} from 'react-native';
 export const styles = StyleSheet.create({
     sideMenuProfileIcon: {
-      resizeMode: 'center',
+      resizeMode: 'contain',
       width: 100,
       height: 100,
       alignSelf: 'center',

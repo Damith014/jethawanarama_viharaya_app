@@ -62,7 +62,7 @@ function AboutScreen() {
           email: "",
           message: "",
         });
-        Alert.alert("", response.response?.result.message ?? "", [
+        Alert.alert("", `${t("success")}`, [
           { text: "OK", onPress: () => console.log("OK Pressed") },
         ]);
       } else {

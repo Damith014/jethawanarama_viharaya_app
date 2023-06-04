@@ -20,35 +20,18 @@ function LanguageScreen() {
     { label: "සිංහල", value: "lk" },
     { label: "English", value: "en" },
   ];
-  useEffect(() => {
-    // setting().catch(error=>{})
-    // async function setting() {
-    //   await selectLanguage("lk");
-    //     const backHandler = BackHandler.addEventListener(
-    //       "hardwareBackPress",
-    //       backAction
-    //     );
-    //     return () => backHandler.remove();
-    // }
-  }, []);
-  const backAction = () => {
-    BackHandler.exitApp();
-    return true;
-  };
   const goHome = async () => {
-    setIsLoading(true);
+    // setIsLoading(true);
     await Client.refreshToken();
     await Client.accessToken();
     let response = await Client.menu();
     if (response.status == 200) {
       setIsLoading(false);
       AsyncStorage.setItem("menu", JSON.stringify(response.menu));
+      navigation.replace("Drawer");
     } else {
       setIsLoading(false);
     }
-    setTimeout(function () {
-      navigation.navigate("Drawer");
-    }, 1000);
   };
   const selectLanguage = async (language: string) => {
     try {

@@ -1,6 +1,6 @@
 import axios from "axios";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { About, Dashboard, Information, Menu, Programs, Response, Search, Sermon } from "./Interface";
+import { About, Dashboard, Information, Menu, Programs, Response, Search, Sermons } from "./Interface";
 const baseURL = () => {
   const apiUrl = "https://www.jethavanaramaviharaya.org/";
   return apiUrl;
@@ -42,7 +42,6 @@ const handleMenuResponse = (response: any) => {
   };
 };
 const handleProgramsResponse = (response: any) => {
-  console.log(response);
   return {
     programs: response.data as Programs,
     status: response && response.status ? response.status : 500,
@@ -86,7 +85,7 @@ const handleSearchresponse = (response: any) => {
 };
 const handleDeshanresponse = (response: any) => {
   return {
-    sermon: response.data as Sermon,
+    sermon: response.data as Sermons,
     status: response && response.status ? response.status : 500,
     error: response && response.data ? response.data.error : "",
   };
@@ -157,7 +156,6 @@ const Client = {
       console.log("error");
     }
     let url = `${baseURL()}api/v2/mobile/${language}/programs`;
-    console.log(url);
     return axios
       .get(url, { headers: { accessToken: token } })
       .then(handleProgramsResponse)
@@ -222,8 +220,6 @@ const Client = {
       console.log("error");
     }
     let url = `${baseURL()}api/v2/mobile/${language}/programs/${program_id}`;
-    console.log(url);
-    
     return axios
       .get(url,{ headers: { accessToken: token } })
       .then(handleInformationresponse)
@@ -246,7 +242,23 @@ const Client = {
       .catch(handleError);
   },
   //Get Deshana
-  deshana:async(type: string, id: string)=>{
+  deshana:async(program_id: string)=>{
+      let token = '';
+      let language = '';
+      try{
+          token = (await AsyncStorage.getItem('accessToken')) as string;
+          language = (await AsyncStorage.getItem('semo_language')) as string;
+      }catch(error){}
+      let url = `${baseURL()}api/v2/mobile/${language}/programs/deshana/${program_id}`;
+      console.log(url);
+      
+      return axios
+        .get(url,{headers:{'accessToken':token}})
+        .then(handleDeshanresponse)
+        .catch(handleError);
+  },
+  //Get Deshana
+  sermons:async(type: string, id: string)=>{
       let token = '';
       let language = '';
       try{

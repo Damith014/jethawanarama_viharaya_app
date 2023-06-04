@@ -46,7 +46,8 @@
             "fill_data":"Please fill this required filed",
             "details":"විස්තර",
             "image":"චායාරූප",
-            "sermon":"දේශනා"
+            "sermon":"දේශනා",
+            "success": "ඔබ ඇතුළත් කළ තොරතුරු සාර්ථකව ‍යොමු කරන ලදි!"
 
       }
 }

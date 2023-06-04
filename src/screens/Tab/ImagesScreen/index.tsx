@@ -70,7 +70,7 @@ function ImageScreen() {
           style={{
             flex: 1,
             marginHorizontal: 16,
-            top: -62,
+            top: 24,
             paddingTop: 15,
             width: windowWidth - 32,
             borderRadius: 6,

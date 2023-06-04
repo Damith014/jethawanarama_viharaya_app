@@ -46,6 +46,7 @@
             "fill_data":"Please fill this required filed",
             "details":"Details",
             "image":"Photographs",
-            "sermon":"Sermons"
+            "sermon":"Sermons",
+            "success": "Your message has been sent."
       }
 }

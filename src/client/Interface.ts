@@ -124,3 +124,7 @@ export interface Sermon {
   deshana?: Deshana[]
   videos?: Video[]
 }
+//For Deshanas
+export interface Sermons {
+  deshana: Deshana[]
+}

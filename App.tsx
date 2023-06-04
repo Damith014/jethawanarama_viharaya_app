@@ -71,9 +71,10 @@ function AudioScreenStack() {
           },
           headerTintColor: '#6F6F6F',
           title: `${t('listen')}`,
-          headerRight: () => (
-            SearchIcon(navigation)
-          ),}}
+          // headerRight: () => (
+          //   SearchIcon(navigation)
+          // ),
+        }}
       />
     </Stack.Navigator>
   );

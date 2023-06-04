@@ -30,19 +30,23 @@ function ProgramScreen() {
     }
   }, []);
   const Item = ({ program,index }: { program: Program, index: number }) => (
-    <ProgramCard
-      program={program}
-      onPress={() => {
-        if (program.id == 1000) {
-          setTimeout(function () {
-            navigation.navigate("Calendar");
-          }, 1000);
-        } else {
-          navigation.navigate("Tab", { program_id: program.id.toString()});
-        }
-      }}
-      isLeft={(index % 2) ? false : true}
-    />
+    <>
+      {program != null &&
+        <ProgramCard
+          program={program}
+          onPress={() => {
+            if (program.id == 1000) {
+              setTimeout(function () {
+                navigation.navigate("Calendar");
+              }, 1000);
+            } else {
+              navigation.navigate("Tab", { program_id: program.id.toString()});
+            }
+          }}
+          isLeft={(index % 2) ? false : true}
+        />
+      }
+    </>
   );
   const EmptyListMessage = () => {
     return (
@@ -62,7 +66,7 @@ function ProgramScreen() {
         <FlatList
           style={{ marginBottom: 0 }}
           data={programs}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item?.id}
           renderItem={({ item, index }) => <Item program={item} index={index}/>}
           nestedScrollEnabled={true}
           ListEmptyComponent={EmptyListMessage}

@@ -86,14 +86,14 @@ function BottomTabStack() {
             headerTintColor: "#FFFFFF",
             title: `${t("programs")}`,
             headerTransparent: true,
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Search")}
-                style={{ marginRight: 15 }}
-              >
-                <Ionicons name="ios-search" size={20} color="#FFFFFF" />
-              </TouchableOpacity>
-            ),
+            // headerRight: () => (
+            //   <TouchableOpacity
+            //     onPress={() => navigation.navigate("Search")}
+            //     style={{ marginRight: 15 }}
+            //   >
+            //     <Ionicons name="ios-search" size={20} color="#FFFFFF" />
+            //   </TouchableOpacity>
+            // ),
             headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Ionicons name="chevron-back" size={30} color="#FFFFFF" />
@@ -113,14 +113,14 @@ function BottomTabStack() {
             headerTintColor: "#FFFFFF",
             title: `${t("programs")}`,
             headerTransparent: true,
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Search")}
-                style={{ marginRight: 15 }}
-              >
-                <Ionicons name="ios-search" size={20} color="#FFFFFF" />
-              </TouchableOpacity>
-            ),
+            // headerRight: () => (
+            //   <TouchableOpacity
+            //     onPress={() => navigation.navigate("Search")}
+            //     style={{ marginRight: 15 }}
+            //   >
+            //     <Ionicons name="ios-search" size={20} color="#FFFFFF" />
+            //   </TouchableOpacity>
+            // ),
             headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Ionicons name="chevron-back" size={30} color="#FFFFFF" />
@@ -140,14 +140,14 @@ function BottomTabStack() {
             headerTintColor: "#FFFFFF",
             title: `${t("programs")}`,
             headerTransparent: true,
-            headerRight: () => (
-              <TouchableOpacity
-                onPress={() => navigation.navigate("Search")}
-                style={{ marginRight: 15 }}
-              >
-                <Ionicons name="ios-search" size={20} color="#FFFFFF" />
-              </TouchableOpacity>
-            ),
+            // headerRight: () => (
+            //   <TouchableOpacity
+            //     onPress={() => navigation.navigate("Search")}
+            //     style={{ marginRight: 15 }}
+            //   >
+            //     <Ionicons name="ios-search" size={20} color="#FFFFFF" />
+            //   </TouchableOpacity>
+            // ),
             headerLeft: () => (
               <TouchableOpacity onPress={() => navigation.goBack()}>
                 <Ionicons name="chevron-back" size={30} color="#FFFFFF" />

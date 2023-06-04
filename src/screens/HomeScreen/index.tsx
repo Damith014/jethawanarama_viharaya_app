@@ -37,6 +37,12 @@ function HomeScreen() {
     getLanguage().catch(error=>{});
     async function getLanguage() {
       let language = await AsyncStorage.getItem("semo_language");
+      if (active1) {
+        await AsyncStorage.setItem("medium", "video");
+      } else {
+        await AsyncStorage.setItem("medium", "audio");
+      }
+      
       if (language == "lk") {
         setActive(false);
       } else {
@@ -119,17 +125,17 @@ function HomeScreen() {
     }
     setIsLoading(false);
   };
-  const changedMedium = async (medium: boolean) => {
+  async function changedMedium(medium: string) {
+    await AsyncStorage.setItem("medium", medium);
     try {
-      if (medium) {
-        await AsyncStorage.setItem("medium", "video");
+      if (medium == "audio") {
+        setActive1(false);
       } else {
-        await AsyncStorage.setItem("medium", "audio");
+        setActive1(true);
       }
     } catch (error) {
       console.log(error);
     }
-    setActive1(medium);
   };
   const DeshanaItem = ({ deshana }: { deshana: Deshanas }) => (
     <MainCard
@@ -267,7 +273,7 @@ function HomeScreen() {
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-                onPress={() => changedMedium(false)}
+                onPress={() => changedMedium("audio")}
               >
                 <Text>{t("audio")}</Text>
               </TouchableOpacity>
@@ -277,7 +283,7 @@ function HomeScreen() {
                   justifyContent: "center",
                   alignItems: "center",
                 }}
-                onPress={() => changedMedium(true)}
+                onPress={() => changedMedium("video")}
               >
                 <Text>{t("video")}</Text>
               </TouchableOpacity>
