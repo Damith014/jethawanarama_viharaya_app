@@ -30,6 +30,9 @@
 		00E356EE1AD99517003FC87E /* jethawanarama_viharaya_appTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = jethawanarama_viharaya_appTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* jethawanarama_viharaya_appTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jethawanarama_viharaya_appTests.m; sourceTree = "<group>"; };
+		08323EC82A2EF34200BD1F8A /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
+		08323EC92A2EF34200BD1F8A /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
+		08323ECC2A2EF3CA00BD1F8A /* Entypo.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* jethawanarama_viharaya_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jethawanarama_viharaya_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = jethawanarama_viharaya_app/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AppDelegate.mm; path = jethawanarama_viharaya_app/AppDelegate.mm; sourceTree = "<group>"; };
@@ -83,9 +86,20 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		08323EC72A2EF31700BD1F8A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				08323EC82A2EF34200BD1F8A /* Ionicons.ttf */,
+				08323ECC2A2EF3CA00BD1F8A /* Entypo.ttf */,
+				08323EC92A2EF34200BD1F8A /* MaterialCommunityIcons.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		13B07FAE1A68108700A75B9A /* jethawanarama_viharaya_app */ = {
 			isa = PBXGroup;
 			children = (
+				08323EC72A2EF31700BD1F8A /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -488,7 +502,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2Q9DPQZK2S;
 				ENABLE_BITCODE = NO;
@@ -525,7 +539,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2Q9DPQZK2S;
 				INFOPLIST_FILE = jethawanarama_viharaya_app/Info.plist;

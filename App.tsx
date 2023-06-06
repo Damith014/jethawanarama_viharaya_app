@@ -47,6 +47,7 @@ function SearchScreenStack() {
            headerStyle: {
           backgroundColor: '#FFFFFF',
         },
+        headerBackTitleVisible: false,
         title: `${t('search')}`,
         headerTintColor: '#6F6F6F',}}
       />
@@ -69,6 +70,7 @@ function AudioScreenStack() {
           headerStyle: {
             backgroundColor: '#FFFFFF',
           },
+          headerBackTitleVisible: false,
           headerTintColor: '#6F6F6F',
           title: `${t('listen')}`,
           // headerRight: () => (
@@ -94,6 +96,7 @@ function VideoScreenStack() {
           headerStyle: {
             backgroundColor: '#000',
           },
+          headerBackTitleVisible: false,
           headerTintColor: '#FFFFFF',
           title: '',}}
       />
